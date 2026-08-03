@@ -19,14 +19,13 @@ These skills follow the [agentskills.io](https://agentskills.io) open standard a
 
 ### Hermes Agent
 
-Clone this repo and add it as an external skill directory:
+Clone this repo, then register it as an external skill directory:
 
-```yaml
-# ~/.hermes/config.yaml
-skills:
-  external_dirs:
-    - ~/haft-skills
+```bash
+hermes config set skills.external_dirs '["~/Sites/haft-skills"]'
 ```
+
+This command replaces the current `skills.external_dirs` value. If you already use other external skill libraries, include all desired directories in the JSON array.
 
 All skills will appear in the agent's skill index, `skills_list()`, and as `/skill-name` slash commands.
 
