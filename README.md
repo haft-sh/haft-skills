@@ -22,10 +22,18 @@ These skills follow the [agentskills.io](https://agentskills.io) open standard a
 Clone this repo, then register it as an external skill directory:
 
 ```bash
-hermes config set skills.external_dirs '["~/Sites/haft-skills"]'
+hermes config edit
 ```
 
-This command replaces the current `skills.external_dirs` value. If you already use other external skill libraries, include all desired directories in the JSON array.
+In the active config, declare `external_dirs` as a YAML list using absolute paths:
+
+```yaml
+skills:
+  external_dirs:
+    - /home/<user>/Sites/haft-skills
+```
+
+Preserve any existing external skill directories in the same list. Do not use `hermes config set skills.external_dirs '[...]'`: Hermes currently persists the bracketed value as a YAML string rather than a YAML list, which prevents external skills from being discovered.
 
 All skills will appear in the agent's skill index, `skills_list()`, and as `/skill-name` slash commands.
 
