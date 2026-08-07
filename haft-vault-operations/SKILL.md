@@ -49,6 +49,7 @@ Do not use for:
 | Task | Skill |
 |---|---|
 | import an existing file into Haft or a remote destination | `haft-import-operations` |
+| read one indexed document or artifact from a configured remote | `haft-import-operations` (`haft get`) |
 | create a structured HTML artifact through the API | `haft-agent-api` |
 | conversationally edit one existing local or remote document through a draft and explicit Apply | `haft-agent-session-operations` |
 | reconcile PRs and queue state | `haft-pr-reconciliation` |
@@ -89,7 +90,7 @@ For structured artifact creation, not existing-file upload.
 ```bash
 haft
 ```
-For host/operator dogfooding, especially remote destination import flows.
+For host/operator dogfooding, remote reads, and remote destination import flows. Use `haft get <slug-or-url-or-handle> --remote <slug> --json` to read one indexed document or artifact; use `haft query` first when the durable handle or slug is unknown.
 
 ## Route Selection Shortcut
 
@@ -101,6 +102,7 @@ For host/operator dogfooding, especially remote destination import flows.
 | structured generated HTML artifact | agent create_html |
 | exact finished Haft HTML artifact | direct vault placement + rebuild |
 | remote destination import to dev or another instance | installed CLI, then load `haft-import-operations` |
+| read one indexed remote document or artifact | `haft query` / `haft get`, then load `haft-import-operations` |
 | remote conversational edit of one existing document | installed CLI, then load `haft-agent-session-operations` |
 
 ## Operating Rules

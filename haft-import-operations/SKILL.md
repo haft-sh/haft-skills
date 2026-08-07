@@ -21,6 +21,7 @@ This is the detailed import playbook. `haft-vault-operations` should route here 
 This skill covers two distinct operational lanes:
 1. **local vault import** through Haft product routes
 2. **remote destination import** through the installed `haft` CLI
+3. **remote indexed reads** through the installed `haft` CLI
 
 Keep them separate. A successful local vault import does not prove the managed remote path works.
 
@@ -32,6 +33,20 @@ haft import /absolute/path/to/file.md --remote dev --wait --json
 ```
 
 A successful result already returns the batch/job/path/hash facts needed to prove the write. Run `haft whoami --json` and `haft remotes list --json` only after an import failure, or when gathering formal managed-path/release evidence.
+
+### Remote indexed reads: `haft query` and `haft get`
+
+Use the CLI for authenticated reads instead of opening a public reader URL in a browser:
+
+```bash
+# Discover the exact page/handle without exporting full bodies
+haft query "prompt kit" --remote dev --include excerpt --limit 20 --json
+
+# Read one indexed page by durable handle
+haft get --handle "haft:page/page-example" --remote dev --json
+```
+
+`haft get` returns Haft's indexed agent-readable text projection plus page identity, content hash, and reader-link metadata. It does not guarantee byte-for-byte source fidelity and does not follow authenticated redirects. Use `haft query` first when the exact slug, page ID, or durable handle is unknown. For exact finished HTML or embedded media bytes, use the appropriate authenticated import/artifact seam rather than assuming `haft get` is a source-file download.
 
 ## When to Use
 
