@@ -55,6 +55,23 @@ Skills must **never** contain:
 - Agent identities tied to personal infrastructure
 - Personal workflow details or project-specific state
 
+## Skill provenance invariant
+
+Reusable Haft, Athabasca, Hypervault, DevSpace, GitHub-project, release, deployment,
+and other team/project operating behavior belongs in a version-controlled team
+skills repository. Do not create or revise those skills only under `.hermes/`,
+`.codex/`, or another machine-local profile directory. The repository-backed
+skill is authoritative when a local copy conflicts with it.
+
+- Haft and shared engineering operations belong here, in `haft-skills`.
+- Athabasca product, media, and creative operations belong in `athabasca-skills`.
+- Local skill directories are reserved for personal, experimental,
+  provider-specific, or temporary workflows.
+
+See [`AGENTS.md`](AGENTS.md), [`skill-provenance-policy/SKILL.md`](skill-provenance-policy/SKILL.md),
+and [`PROFILE-SKILL-MIGRATION.md`](PROFILE-SKILL-MIGRATION.md) for the invariant,
+procedure, and current audit.
+
 ## Contributing
 
 PRs welcome. All changes are reviewed for sanitization compliance before merge.

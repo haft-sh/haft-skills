@@ -176,7 +176,7 @@ The normal path should **not** require `HAFT_DEV_REMOTE_TOKEN`.
 Use only when central discovery / grant exchange is unavailable and the task explicitly accepts fallback semantics:
 ```bash
 # Ensure haft is in PATH
-haft remote add dev --url https://dev.haft.sh --token-env HAFT_DEV_REMOTE_TOKEN
+haft remote add dev --url https://<dev-hosted-origin> --token-env HAFT_DEV_REMOTE_TOKEN
 haft remotes list --json
 haft remote status dev --json
 haft import /absolute/path/to/file.md --remote dev --wait --json

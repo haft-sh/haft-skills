@@ -39,7 +39,7 @@ Do not use this as a substitute for the Haft Kanban board for development-card s
 
 3. **Deliver to Haft, CLI/API-first, single import.**
    - Use the installed `haft` CLI (not `bun src/cli.ts` from a repo checkout).
-   - Do **not** open `dev.haft.sh` in a browser for routine creation, retrieval, editing, status, or import; use its web UI only when JP explicitly requests browser interaction.
+   - Do **not** open `<dev-hosted-origin>` in a browser for routine creation, retrieval, editing, status, or import; use its web UI only when JP explicitly requests browser interaction.
    - **First import of the day (no existing note):**
      `haft import <staged-file> --target-folder 'Daily Notes' --remote dev --wait --json`
    - **Subsequent updates to the same day's note:**
