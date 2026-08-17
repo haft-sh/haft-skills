@@ -154,6 +154,15 @@ python3 <scripts-dir>/haft_ready_worktree_card.py validate <task_id>
 5. **Forgetting `master`**
    - Haft uses `master` as the merge target on this host.
 
+## Review ≠ CI Gate
+
+The reviewer's job is code quality. CI status is the merge gate's job. When sweeping PRs:
+
+- A PR with an APPROVE review and red CI is **review-done, CI-blocked** — do not ask the reviewer to re-review or withhold approval because CI is failing
+- A PR with clean CI but no review is **CI-done, review-blocked** — the merge gate waits for a formal non-author APPROVE
+- Do not submit COMMENTED reviews to express CI concern — that conflates two separate gates and creates unnecessary round trips
+- CI-intake consumer `10bd9a4ea192` handles CI failure dispatch; the reviewer handles code quality
+
 ## Verification Checklist
 
 - [ ] Board slug used was `haft`
