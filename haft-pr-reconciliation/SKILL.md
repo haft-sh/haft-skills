@@ -43,10 +43,22 @@ Do not use for:
 Before acting, assume these are the defaults unless the live repo proves otherwise:
 
 - Use Kanban board slug **`haft`**, not anything historical.
-- Use canonical repo `<repo-root>` only as an operational anchor.
-- Do development in worktrees under `<repo-root>/.worktrees/`.
+- Use canonical repo `/home/ubuntu/Sites/haft` only as an operational anchor.
+- Do development in worktrees under `/home/ubuntu/Sites/haft/.worktrees/`.
 - Merge target is **`master`**.
 - Ready external-worker cards are only real if they validate under the Haft helper.
+
+## Skills directory convention
+
+All Haft skills live in version-controlled GitHub repos, not local-only directories:
+
+- **`~/Sites/haft-skills`** — public Haft skills (GitHub repo: `haft-sh/haft-skills`)
+- **`~/Sites/haft-private-skills`** — private Haft skills (GitHub repo: `jplew/haft-private-skills`)
+- **`~/Sites/athabasca-skills`** — Athabasca-specific skills (GitHub repo)
+
+Do NOT write skills to `/home/ubuntu/src/hermes-external-skills` or any other local-only path. Those directories are not version-controlled, not shared across hosts, and create conflicting sources of truth. The orchestrator config `external_dirs` points only to the three GitHub repos.
+
+When creating or patching Haft skills, write to the appropriate GitHub repo directory and commit/push.
 
 ## Reconciliation Loop
 
