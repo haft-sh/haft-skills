@@ -266,6 +266,12 @@ Do **not** treat an unauthenticated `403` from a public reader or status probe a
 9. **Running `remote status` as mandatory ceremony before every import**
    - Use it when you need diagnosis, not when the simple import path already proves success.
 
+10. **Attempting `haft service-token create --remote <slug>` before confirming HQ grant-management readiness**
+    - `service-token create` requires the remote to advertise `service-token-admin`, which may not exist if the remote does not advertise the derived capability on its auth route family.
+    - If the required HQ grant-management surface is absent, the operation will fail; do not treat this as an import problem. Treat it as a missing product surface.
+    - Before entering a bounded canary workflow, run `haft remote doctor <slug>` and confirm the target lists the expected operations and that the required grant surface is available; if not, escalate the gap rather than stitching manual workarounds.
+    - When a bounded canary is required, compose the verification from the same seam that owns `remote doctor`, central grants, import, and projection refresh — do not ad-hoc stitch receipt recovery, token provisioning, ingest, and UI verification as separate steps.
+
 ## Verification Checklist
 
 - [ ] Correct route chosen for local import type
