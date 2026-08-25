@@ -36,6 +36,7 @@ A remote AgentSession bootstrap or authorization failure is not permission to:
 - ask the user for a raw path, selector, bearer, or credential
 - fall back to a manually configured static-bearer remote
 - apply automatically after a turn
+- treat an authorization failure as permission to import-overwrite the document
 
 Classify the failure and repair the AgentSession path instead.
 
