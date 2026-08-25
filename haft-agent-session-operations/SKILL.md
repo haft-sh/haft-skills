@@ -1,7 +1,7 @@
 ---
 name: haft-agent-session-operations
 description: Use when editing one existing Haft document through a local or managed remote AgentSession; covers installed-CLI preflight, exact artifact targeting, draft review, explicit Apply, bounded evidence, and bootstrap failure classification.
-version: 1.0.0
+version: 1.1.0
 author: Hermes Agent
 license: MIT
 metadata:
