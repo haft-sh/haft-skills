@@ -28,7 +28,7 @@ The goal is not to produce a pretty report. The goal is to leave GitHub and the 
 ## When to Use
 
 Use for:
-- PR sweeps on `<github-org>/haft`
+- PR sweeps on Haft or Haft-adjacent repos listed in `references/current-state.md`
 - review→done reconciliation after merged PRs
 - queue stewardship for Haft external-worker worktree cards
 - claimability repair after auto-promotion or stale metadata
@@ -42,11 +42,11 @@ Do not use for:
 
 Before acting, assume these are the defaults unless the live repo proves otherwise:
 
-- Use Kanban board slug **`haft`**, not anything historical.
-- Use canonical repo `/home/ubuntu/Sites/haft` only as an operational anchor.
-- Do development in worktrees under `/home/ubuntu/Sites/haft/.worktrees/`.
-- Merge target is **`master`**.
-- Ready external-worker cards are only real if they validate under the Haft helper.
+- Primary Haft repo on this host: `/home/ubuntu/Sites/haft`
+- Adjacent Haft repos may also carry live reconciliation work, e.g. `haft-sh/new-api`
+- Do development in worktrees when repo-linked work is needed
+- Merge target is **`master`** on the Haft repo when working in `haft-sh/haft`
+- Treat `references/current-state.md` as the cached snapshot of last-known merged/closed state when the live board is not the primary source of truth
 
 ## Skills directory convention
 
