@@ -1,7 +1,7 @@
 ---
 name: haft-agent-session-operations
 description: Use when editing one existing Haft document through a local or managed remote AgentSession; covers installed-CLI preflight, exact artifact targeting, draft review, explicit Apply, bounded evidence, and bootstrap failure classification.
-version: 1.0.0
+version: 1.1.0
 author: Hermes Agent
 license: MIT
 metadata:
@@ -215,6 +215,20 @@ Examples:
 - `agent_session.artifact_unsafe`
 
 Do not guess another target. Re-resolve from current Haft product identity or ask the user to choose among visible current artifacts.
+
+### `agent-session.runner-unavailable`
+
+Meaning:
+- The selected runner host (hermes, codex, or claude-code) is not installed or failed its bounded startup handshake
+- `haft agent-session doctor` reports the runner as `unavailable`
+- `haft agent-session setup --runner <id>` failed with `agent-session.runner-host-activation-failed`
+
+Action:
+- Run `haft agent-session doctor` to confirm which runners are available
+- Try `haft agent-session setup --runner <id> --refresh` for a different runner
+- If no runner is available, report the blocker: the AgentSession write path is locally unavailable
+- Do NOT fall back to import overwrite, direct canonical patching, or any other write lane
+- The failure is a local environment issue, not a destination authorization issue — do not retry against the remote
 
 ### Revision or binding failures
 

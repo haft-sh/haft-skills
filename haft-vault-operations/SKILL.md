@@ -116,6 +116,18 @@ If a normal product API or CLI path exists, use it before reaching for:
 Exception:
 - a finished Haft HTML artifact that must remain byte-for-byte unchanged may be placed directly in vault `content/` plus index rebuild
 
+### 1a. Resolve named Haft instances before writing
+The user may refer to Haft instances by nickname. On this host:
+- **indraloka** = dev Haft instance at `https://dev.haft.sh`
+- Canonical checkout for indraloka: `/home/ubuntu/Sites/haft`
+
+Do **not** confuse instance nicknames with Hermes profile paths such as `/home/ubuntu/.hermes/profiles/orchestrator/`. When the user says “save to indraloka,” the destination is the indraloka instance’s vault/repo, not the orchestrator profile directory.
+
+If an instance nickname is unfamiliar, look it up in repo docs, `AGENTS.md`, or session memory before writing.
+
+### 1b. Verify the exact file path before claiming success
+A successful write tool call is not proof the file is in the right vault or instance. After any create/edit/import, confirm the target path matches the intended Haft instance and document location, then report the verified absolute path.
+
 ### 2. Distinguish local vault work from remote dogfood
 Local import success does not prove the managed remote path.
 
