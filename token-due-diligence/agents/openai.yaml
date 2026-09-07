@@ -1,0 +1,4 @@
+interface:
+  display_name: "Token Due Diligence"
+  short_description: "Evidence-bounded diligence for EVM and Solana tokens."
+  default_prompt: "Use $token-due-diligence to assess this exact EVM or Solana token's investment risks and economic structure using available evidence."
