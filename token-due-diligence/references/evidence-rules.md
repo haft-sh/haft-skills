@@ -4,12 +4,12 @@ These rules are mandatory for every token diligence investigation. Violations in
 
 ## Chain and Address Binding
 
-- Bind every query, artifact, and conclusion to the exact requested chain and contract address. Never substitute a same-symbol token.
-- Verify chain ID from RPC. Resolve metadata from the target; missing or nonstandard metadata must remain explicitly unresolved.
+- Bind every query, artifact, and conclusion to the exact requested chain and contract address or mint. Never substitute a same-symbol token. Preserve Solana base58 case.
+- Verify EVM chain ID or Solana cluster genesis identity from RPC when direct reads are in scope. Resolve metadata from the target; missing or nonstandard metadata must remain explicitly unresolved.
 
 ## State Pinning
 
-- Pin current state to a block number, block hash, and UTC timestamp. Give additional chains their own pins.
+- EVM: pin state to block number, hash and UTC timestamp. Solana: record commitment, response context slots and retrieval times; bind transactions to their returned slots and available block evidence. Do not claim arbitrary historical account-state pinning from `minContextSlot`. Give additional chains their own contexts.
 - Distinguish historical evidence from current state.
 
 ## Evidence Preservation
@@ -21,7 +21,7 @@ These rules are mandatory for every token diligence investigation. Violations in
 ## Source and Runtime Verification
 
 - Verify source correspondence before treating published source as the deployed implementation.
-- Resolve proxies, implementations, beacons, and upgrade authority.
+- EVM: resolve proxies, implementations, beacons and upgrade authority. Solana: resolve token-program ownership, mint/account authorities, and material program upgrade controls using the Solana adapter.
 
 ## Coverage Limitations
 

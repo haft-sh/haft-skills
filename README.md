@@ -9,7 +9,7 @@ These skills follow the [agentskills.io](https://agentskills.io) open standard a
 | Skill | Purpose |
 |---|---|
 | `daily-notes` | Deterministic daily-note creation and update workflow via the Haft CLI |
-| `evm-token-due-diligence` | Rigorous evidence-bounded diligence on exact EVM tokens |
+| `token-due-diligence` | Evidence-bounded diligence on exact EVM and Solana tokens |
 | `haft-agent-api` | Creating Haft HTML artifacts through the agent API |
 | `haft-agent-session-operations` | Editing existing Haft documents through isolated agent sessions |
 | `haft-import-operations` | Importing files into Haft and testing CLI-managed remote paths |
