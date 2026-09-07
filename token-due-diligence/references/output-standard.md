@@ -39,8 +39,8 @@ Maintain a finding-to-evidence ledger with:
 - Finding ID
 - Exact proposition
 - Chain
-- Address
-- Pin or transaction
+- Exact contract address or case-sensitive mint
+- EVM pin/transaction, or Solana commitment/context slots and transaction signature
 - Artifact/query
 - Decoding basis
 - Evidence type
@@ -50,3 +50,5 @@ Maintain a finding-to-evidence ledger with:
 - Conditions that would make the claim stale
 
 For discovery claims, record the search universe, block ranges or pagination, inclusion rules, and materiality thresholds.
+
+For indexed/research-derived tables, bind the selection, decoder revision, quote unit, denominator and artifact IDs using `research-evidence-manifest.md`. Distinguish manual Solana evidence review from the bundled EVM packet validator, and scientific qualification from editorial approval or permission to publish.

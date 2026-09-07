@@ -2,6 +2,8 @@
 
 Screen all 8 surfaces. Deepen only where evidence triggers further work. Prioritize checks that can change the conclusion — do not apply monetary materiality thresholds to discovery of mint, upgrade, seizure, transfer restriction, arbitrary-call, or LP-removal authority.
 
+These are shared economic questions; ERC20, delegatecall, Transfer, Pons and Uniswap mechanics below are EVM-specific. For Solana, apply `solana.md` to each surface instead of treating absent EVM mechanisms as passed checks. A scoped/cursory request may leave surfaces explicitly unchecked.
+
 ## A. Token Code and Control
 
 Inspect minting, burning, rebasing, balance rewrites, seizure, pause, blacklist, whitelist, taxes, exemptions, cooldowns, transaction limits, trading gates, external calls, delegatecall, and upgrade paths.

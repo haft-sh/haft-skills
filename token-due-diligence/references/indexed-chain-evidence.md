@@ -2,6 +2,8 @@
 
 Use when the user provides an indexer, research repository, retained raw archive, or direct database access. Jeetstreet is an optional adapter, not a prerequisite. Keep ordinary RPC/explorer diligence usable when local capabilities are absent.
 
+Read `research-evidence-manifest.md` for token-scoped handoff and claim eligibility. Select the EVM or Solana adapter before interpreting indexed data; the EVM log/receipt mechanics below apply only to EVM.
+
 ## Establish capability and authority
 
 1. Read applicable repository instructions, research specifications, schema/migrations, and relevant decoder/ingestion tests. Use `git status --short`, `git rev-parse HEAD`, and `rg` before assuming a clean or current checkout.
@@ -34,6 +36,8 @@ A signature authenticates a selected artifact, not historical completeness. Two 
 ## Reconcile identities, then bodies
 
 Freeze the selection before calculating trading/holder statistics. Compare canonical log identities using chain ID, block hash, transaction hash and log index, with address/topic/pool filters. Also compare block number and raw payloads. Deduplicate redeliveries without hiding conflicting bodies. A reorg is not an ordinary missing event: reconcile canonical headers, removal status and event revisions explicitly.
+
+For Solana, use cluster/signature/instruction-location identities and retained slot/block context as described in `solana.md`; reconcile top-level/inner instructions and account balance bodies rather than manufacturing EVM log fields.
 
 Report at least:
 

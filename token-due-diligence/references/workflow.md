@@ -5,8 +5,8 @@
 Start with one target packet containing:
 - Requested and observed chain/address
 - Name, symbol, decimals, supply
-- Block pin and captured header
-- Runtime hash and proxy/implementation information
+- EVM block pin/header, or Solana genesis identity, commitment and response context slots
+- EVM runtime/proxy identity, or Solana token-program ownership and relevant authority/program identities
 - Deployment or launch transaction when available
 - Candidate pools and related contracts
 - User's decision question, scope, materiality rules, and known limitations
@@ -17,7 +17,7 @@ Make a cheap architecture pass identifying every contract or key that can change
 
 ## Batching and Caching
 
-Batch independent reads, cache responses by chain/address/block/query, and deduplicate identical runtimes by code hash.
+Batch independent reads and cache by chain, exact target, query and state context (EVM block hash; Solana commitment and returned context slot). Deduplicate identical EVM runtimes by code hash. Do not merge independently timed Solana reads into a fictional common snapshot.
 
 When a user supplies an indexer/research project, use the optional adapter in `indexed-chain-evidence.md` before relying on derived data. Reuse exact archived bytes and verified ancestry, impose query/read budgets, and reconcile bounded raw/index identities before computing metrics. Distinguish local source, deployed code and in-flight research gates.
 
