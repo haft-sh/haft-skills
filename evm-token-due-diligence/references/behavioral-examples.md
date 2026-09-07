@@ -1,5 +1,13 @@
 # Behavioral Examples
 
+## Indexed history with a convincing count
+
+An index and raw RPC each return the same number of trades. One early swap is missing from the index and a duplicate/different-fork event fills the count. Reconcile exact active identities and headers; do not declare completeness from totals. Then check bodies: perfectly matching identities can still carry reversed trade sides.
+
+## Configured revenue without execution
+
+A project's docs promise fee-funded purchases. Pending escrow exists, but the treasury token binding and swap route are unset. Report deployed components and pending claims separately from unexecuted purchases. Affiliation remains unresolved without authenticated exact-address evidence; do not jump to a counterfeit allegation.
+
 These examples illustrate edge cases the skill must handle correctly.
 
 ## 1. Locked Canonical Liquidity with Removable Side Liquidity

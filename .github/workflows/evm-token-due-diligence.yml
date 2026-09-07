@@ -1,0 +1,29 @@
+name: EVM diligence skill checks
+
+on:
+  pull_request:
+    paths:
+      - "evm-token-due-diligence/**"
+      - ".github/workflows/evm-token-due-diligence.yml"
+  push:
+    branches: [main]
+    paths:
+      - "evm-token-due-diligence/**"
+      - ".github/workflows/evm-token-due-diligence.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  evidence-validator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Synthetic offline evidence validation
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python3 evm-token-due-diligence/scripts/test_validate_report.py
+      - run: git diff --check
