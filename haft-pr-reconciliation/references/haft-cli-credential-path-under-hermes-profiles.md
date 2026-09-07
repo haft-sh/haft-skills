@@ -30,7 +30,7 @@ After symlink:
 ```
 $ haft auth status
 Signed in to Haft HQ.
-Email: jplew108@gmail.com
+Email: <your-email>
 ...
 
 $ haft remotes list

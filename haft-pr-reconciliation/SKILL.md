@@ -28,7 +28,7 @@ The goal is not to produce a pretty report. The goal is to leave GitHub and the 
 ## When to Use
 
 Use for:
-- PR sweeps on Haft or Haft-adjacent repos listed in `references/current-state.md`
+- PR sweeps on Haft or Haft-adjacent repos
 - review→done reconciliation after merged PRs
 - queue stewardship for Haft external-worker worktree cards
 - claimability repair after auto-promotion or stale metadata
@@ -46,7 +46,7 @@ Before acting, assume these are the defaults unless the live repo proves otherwi
 - Adjacent Haft repos may also carry live reconciliation work, e.g. `haft-sh/new-api`
 - Do development in worktrees when repo-linked work is needed
 - Merge target is **`master`** on the Haft repo when working in `haft-sh/haft`
-- Treat `references/current-state.md` as the cached snapshot of last-known merged/closed state when the live board is not the primary source of truth
+- Maintain session-dated evidence of merged/closed state in the private skills repo as needed; do not commit dated session snapshots to this public repo
 
 ## Skills directory convention
 
