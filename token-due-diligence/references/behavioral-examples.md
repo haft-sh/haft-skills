@@ -1,5 +1,25 @@
 # Behavioral Examples
 
+## Frozen replay with incorrect semantics
+
+A frozen export reproduces every stored event hash, but independent raw receipt decoding shows inverted buy/sell directions. Treat reproducibility and semantic validity separately. Preserve the legacy artifact; require corrected decoder fixtures and successor lineage before using direction-based metrics. Do not weaken hash checks to accept silently changed bodies.
+
+## Retrospective launch attribution
+
+A mint transfer precedes the launch event within one verified transaction. A replay can attribute it after discovering the token, with that later availability. It cannot claim the token was known before discovery, borrow a later transaction's registry, or imply missing indexed rows were backfilled.
+
+## Solana sample and context limits
+
+A provider returns 20 largest token accounts, several owned by one authority, at a later slot than the supply read. Report a sampled account/owner analysis with context drift, not a complete holder census or a single pinned snapshot. Resolve program ownership separately from token-account owner authority. Do not lowercase mints or pass them through the EVM validator.
+
+## Research support on the wrong chain
+
+A research export supports only Robinhood event identities, while the requested mint is on Solana. Reuse the evidence standards, not the decoder/schema. Discover a compatible Solana adapter or leave indexed coverage unresolved; the existence of a whole-chain indexing project is not proof of target coverage.
+
+## Cursory scope without fresh chain reads
+
+The user asks for desk research only on a chain without local coverage. Use permitted public evidence, time-label claims and explicitly leave untested controls and executable depth unresolved. Do not provision infrastructure or issue RPC queries merely to satisfy the broad-diligence checklist.
+
 ## Indexed history with a convincing count
 
 An index and raw RPC each return the same number of trades. One early swap is missing from the index and a duplicate/different-fork event fills the count. Reconcile exact active identities and headers; do not declare completeness from totals. Then check bodies: perfectly matching identities can still carry reversed trade sides.

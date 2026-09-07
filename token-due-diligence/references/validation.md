@@ -1,5 +1,7 @@
 # Validation
 
+The target-integrity principles apply to both supported chains, but the executable validator and schema below are **EVM-only**. For Solana, apply `solana.md` manually and retain raw account/transaction evidence, genesis identity, commitment and response contexts. The research handoff in `research-evidence-manifest.md` is not an executable validation schema. Do not label a Solana report machine-validated by this tool.
+
 ## Target-Integrity Manifest
 
 For broad reports, maintain a target-integrity manifest and validate it. The manifest should check:

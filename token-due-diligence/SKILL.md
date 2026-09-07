@@ -1,19 +1,19 @@
 ---
-name: evm-token-due-diligence
-description: "Rigorous evidence-bounded diligence on exact EVM tokens."
+name: token-due-diligence
+description: "Evidence-bounded risk and investment due diligence on exact EVM and Solana tokens, including indexed-chain research."
 license: MIT
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   author: Agent Chud (@AgentChud), Hermes Agent
 ---
 
-# EVM Token Due Diligence
+# Token Due Diligence
 
-Rigorous, evidence-bounded diligence on an exact EVM token and its economic system. Investigates privileged actor control, liquidity custody, sellability, supply concentration, launch integrity, fee flows, reward rights, and external dependencies. Not a price predictor, trading bot, generic scanner score, or substitute for a full protocol exploit audit.
+Rigorous, evidence-bounded diligence on an exact EVM contract or Solana mint and its economic system. Investigates privileged actor control, liquidity custody, sellability, supply concentration, launch integrity, fee flows, reward rights, and external dependencies. Not a price predictor, trading bot, generic scanner score, or substitute for a full protocol exploit audit.
 
 ## When to Use
 
-- User asks about a specific EVM token's safety, risks, or economic structure
+- User asks about a specific EVM or Solana token's safety, investment risks, or economic structure
 - Questions about mint authority, upgradeability, seizure rights, or blacklist controls
 - Liquidity lock status, LP principal removal risk, or side-pool exposure
 - Sellability, exit depth, or executable size for a holder
@@ -25,11 +25,15 @@ Don't use for: price prediction, trading signals, generic safety scores without 
 
 ## Prerequisites
 
-- An EVM RPC endpoint (public or private) reachable from the terminal
-- `cast` (Foundry), or an equivalent ABI-capable library such as ethers, for read-only RPC and decoding
-- Block explorer access (Etherscan, Blockscout, or chain-specific) for source verification and discovery
+- For direct chain checks: a chain-appropriate read-only RPC endpoint and decoding tools; EVM can use `cast` or an ABI-capable library, Solana needs account/instruction decoding
+- Chain-appropriate explorer access for source verification and discovery
 - No private keys, seed phrases, or signing capability required — this skill operates read-only
 - Optional: an authorized local indexer/research repository and retained chain evidence. Discover its current capabilities; do not assume complete history or permission to deploy/backfill.
+- If the user requests cursory research or excludes RPC/indexer reads, honor that scope. Report unchecked chain controls and coverage as unresolved; tools are not a prerequisite to a bounded desk-research answer.
+
+## Chain Routing
+
+Read `references/evidence-rules.md` for every investigation. For EVM, use the block/runtime checks below and `references/execution-and-utility.md` when execution or utility is material. For Solana, read `references/solana.md` before chain queries or interpreting indexed data; EVM receipts, address normalization, proxy checks and the EVM validator are not substitutes. Use separate chain-specific packets for cross-chain dependencies.
 
 ## Operating Modes
 
@@ -38,6 +42,8 @@ Don't use for: price prediction, trading signals, generic safety scores without 
 3. **Formal report** — complete and reconcile evidence first, then generate the requested report and visuals. Do not repeat research just to format it.
 
 ## Quick Reference
+
+The `cast` commands below are EVM-only. Solana identity, state context and instruction checks are in its adapter.
 
 - Pin state: `cast block latest --rpc-url <rpc>` → block number, hash, timestamp
 - Identity check: verify chain ID from RPC; resolve name/symbol/decimals/supply from the target contract
@@ -49,13 +55,13 @@ Don't use for: price prediction, trading signals, generic safety scores without 
 
 ## Procedure
 
-1. **Build the target packet** — requested/observed chain/address, name/symbol/decimals/supply, block pin + header, runtime hash + proxy/implementation info, deployment/launch tx, candidate pools/contracts, user's decision question, scope, materiality rules, known limitations.
-2. **Verify chain identity** — `cast chain-id --rpc-url <rpc>`; confirm the target address resolves to the expected metadata. Never substitute a same-symbol token.
+1. **Build the target packet** — requested/observed chain and contract/mint, metadata/raw supply, block pin or Solana commitment/context slots, code/program/authority identity, deployment/launch transaction, candidate markets, user's decision question, scope and known limitations.
+2. **Verify chain identity** — EVM: RPC chain ID and exact contract; Solana: cluster genesis identity and exact case-sensitive mint. Confirm target metadata without substituting a same-symbol token.
 3. **Architecture pass** — identify every contract or key that can change balances, restrict transfers, remove principal, upgrade behavior, collect fees, allocate rewards, or enforce claimed utility. Prioritize checks that can change the conclusion.
-   If an indexer or research repository is in scope, first read `references/indexed-chain-evidence.md`. Separate source/code identity, retained raw evidence, canonical interpretation, historical coverage, and scientific/publication eligibility.
+   If an indexer or research repository is in scope, first read `references/indexed-chain-evidence.md` and `references/research-evidence-manifest.md`. Separate source/code identity, retained raw evidence, canonical interpretation, historical coverage, and scientific/publication eligibility. Check the adapter's actual chain support before using it.
 4. **Screen core risk surfaces** — work through the 8 risk surfaces (see `references/core-risk-surfaces.md`). Deepen only where evidence triggers further work.
 5. **Reconcile evidence** — opening balance + inflows + adjustments = outflows + closing balance + bounded unexplained delta. Account for wraps, burns, bridge legs, gas, reverts.
-   Verify material decoded trade directions against raw receipts before using side-based metrics. Read `references/execution-and-utility.md` for launch routing, hook fees, source reconstruction, and claimed buyback checks.
+   Verify material decoded trade directions against raw successful execution and balance flows before using side-based metrics. Apply the selected chain adapter to launch routing, fees and claimed buybacks.
 6. **Write the verdict** — lead with a direct conditional answer to the user's actual question. Rate each risk surface separately. Use bounded language. Maintain a finding-to-evidence ledger.
 
 ## Pitfalls
@@ -74,11 +80,13 @@ Don't use for: price prediction, trading signals, generic safety scores without 
 ## Verification
 
 - Confirm the finding-to-evidence ledger covers every material claim with chain, address, pin, and decoding basis.
-- Validate any broad-diligence report against the target-integrity manifest: chain/address consistency, metadata consistency, block pins, scope-address provenance, and no-signing declarations.
-- For a machine-checkable evidence packet, follow `references/validation.md` and run `python3 scripts/validate_report.py <manifest.json>`. It checks captured bytes/header bindings, not economic truth, RPC honesty, or completeness. Existing reports must be explicitly adapted; do not manufacture missing evidence to satisfy the schema.
+- Validate any broad-diligence report against the target-integrity checklist: chain/target consistency, metadata, chain-appropriate state context, scope provenance and no-signing declarations.
+- For an **EVM-only** machine-checkable packet, follow `references/validation.md` and run `python3 scripts/validate_report.py <manifest.json>`. It checks captured bytes/header bindings, not economic truth, RPC honesty, or completeness. Solana uses the manual adapter checklist; no Solana packet validator is included. Do not fabricate evidence or coerce Solana into the EVM schema.
 
 ## References
 
+- `references/solana.md` — Solana identity/context, authorities, instruction flows, holder and liquidity checks
+- `references/research-evidence-manifest.md` — token-scoped research handoff, claim eligibility and publication lineage
 - `references/evidence-rules.md` — non-negotiable evidence rules
 - `references/core-risk-surfaces.md` — the 8 core risk surfaces (A-H)
 - `references/workflow.md` — efficient workflow and parallel-agent guidance
